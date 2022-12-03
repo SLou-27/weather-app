@@ -1,0 +1,18 @@
+.container {
+    display: block;
+    margin: auto;
+    margin-top: 50px;
+    max-width: 600px;
+    border: solid 1px blueviolet;
+    border-radius: 15px;
+    padding: 25px;
+  }
+  .subheading {
+    border: 1px solid blueviolet;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  .weather-search {
+    margin-bottom: 10px;
+  }
+  
