@@ -6,6 +6,7 @@
     border: solid 1px blueviolet;
     border-radius: 15px;
     padding: 25px;
+    text-transform: capitalize;
   }
   .subheading {
     border: 1px solid blueviolet;
@@ -24,4 +25,3 @@
   .gitlink:hover {
     text-decoration: underline;
   }
-  

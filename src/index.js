@@ -29,11 +29,15 @@ let searchForm = document.querySelector("#search-form");
 let cityName = document.querySelector("#cityname");
 let cityInput = document.querySelector("#city-input");
 
+let weatherDescription = document.querySelector("#description");
+
 function showWeather(response) {
   console.log(response);
   let temperature = Math.round(response.data.main.temp);
   let mainTemp = document.querySelector("#maintemp");
   mainTemp.innerHTML = `${temperature} degrees`;
+  let skyForecast = response.data.weather[0].description;
+  weatherDescription.innerHTML = `${skyForecast}`;
 }
 
 function changeCity(event) {
