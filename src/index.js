@@ -31,16 +31,19 @@ let cityInput = document.querySelector("#city-input");
 
 let weatherDescription = document.querySelector("#description");
 let humidityElement = document.querySelector("#humidity-percentage");
+let windElement = document.querySelector("#wind-speed");
 
 function showWeather(response) {
   console.log(response);
   let temperature = Math.round(response.data.main.temp);
   let mainTemp = document.querySelector("#maintemp");
-  mainTemp.innerHTML = `${temperature} degrees`;
+  mainTemp.innerHTML = `${temperature}°`;
   let skyForecast = response.data.weather[0].description;
   weatherDescription.innerHTML = `${skyForecast}`;
   let humidity = response.data.main.humidity;
   humidityElement.innerHTML = `${humidity}`;
+  let windSpeed = Math.round(response.data.wind.speed);
+  windElement.innerHTML = `${windSpeed}`;
 }
 
 function changeCity(event) {
