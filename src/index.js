@@ -30,6 +30,7 @@ let cityName = document.querySelector("#cityname");
 let cityInput = document.querySelector("#city-input");
 
 let weatherDescription = document.querySelector("#description");
+let humidityElement = document.querySelector("#humidity-percentage");
 
 function showWeather(response) {
   console.log(response);
@@ -38,6 +39,8 @@ function showWeather(response) {
   mainTemp.innerHTML = `${temperature} degrees`;
   let skyForecast = response.data.weather[0].description;
   weatherDescription.innerHTML = `${skyForecast}`;
+  let humidity = response.data.main.humidity;
+  humidityElement.innerHTML = `${humidity}`;
 }
 
 function changeCity(event) {
