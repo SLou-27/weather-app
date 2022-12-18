@@ -34,7 +34,8 @@ let humidityElement = document.querySelector("#humidity-percentage");
 let windElement = document.querySelector("#wind-speed");
 let iconElement = document.querySelector("#icon");
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row text-center">`;
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -66,6 +67,13 @@ forecastHTML = forecastHTML + `</div>`
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  apiKey = `3fa1c42a0146db1776t473f0do8a7e9c`;
+  apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&key=${apiKey}&units=metric`
+  axios.get(apiUrl).then(displayForecast);
+}
+
 function showWeather(response) {
   console.log(response);
   let temperature = Math.round(response.data.main.temp);
@@ -78,7 +86,7 @@ function showWeather(response) {
   let windSpeed = Math.round(response.data.wind.speed);
   windElement.innerHTML = `${windSpeed}`;
   iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-  displayForecast();
+  getForecast(response.data.coord);
 }
 
 function changeCity(event) {
