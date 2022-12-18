@@ -34,6 +34,38 @@ let humidityElement = document.querySelector("#humidity-percentage");
 let windElement = document.querySelector("#wind-speed");
 let iconElement = document.querySelector("#icon");
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row text-center">`;
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  days.forEach (function (day) {  
+    forecastHTML = forecastHTML + `
+  <div class="col-2">
+    <img src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png" width="20px">
+    <br />
+   <span class="weather-forecast-day">
+    M
+    </span>
+    <br />
+    <span class="weather-forecast-temperatures">
+    <span class="weather-forecast-temp-max">
+      High
+      </span>
+    <br />
+    <span class="weather-forecast-temp-min">
+      Low
+
+    </span>
+    </span>
+  </div>
+
+`;
+}
+);
+forecastHTML = forecastHTML + `</div>`
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showWeather(response) {
   console.log(response);
   let temperature = Math.round(response.data.main.temp);
@@ -46,6 +78,7 @@ function showWeather(response) {
   let windSpeed = Math.round(response.data.wind.speed);
   windElement.innerHTML = `${windSpeed}`;
   iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  displayForecast();
 }
 
 function changeCity(event) {
